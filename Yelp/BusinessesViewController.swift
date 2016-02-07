@@ -39,18 +39,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
                 print(business.name!)
                 print(business.address!)
             }
-                    })
+        })
 
-/* Example of Yelp search with more search options specified
-        Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
-            self.businesses = businesses
-            
-            for business in businesses {
-                print(business.name!)
-                print(business.address!)
-            }
-        }
-*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,7 +50,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // check for input business data if there any data the return number of businesses otherwise nothing
-        //let businesses = Businesses
+        //if bussiness is not empty then return something
         if businesses != nil{
             return businesses!.count
         }else{
