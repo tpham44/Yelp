@@ -9,6 +9,7 @@
 import UIKit
 
 class Business: NSObject {
+    // Below variables are we wanted to display
     let name: String?
     let address: String?
     let imageURL: NSURL?
