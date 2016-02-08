@@ -8,17 +8,23 @@
 
 import UIKit
 
-class FiltersViewController: UIViewController {
+class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     @IBOutlet weak var tableView: UITableView!
     
     
-
+    var categories: [[String:String]]!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        categories = yelpCategories()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         // Do any additional setup after loading the view.
     }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -37,7 +43,28 @@ class FiltersViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categories!.count
+        
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("switchCell", forIndexPath: indexPath) as! SwitchCell
+        
+        cell.switchLabel.text = categories[indexPath.row]["name"]
+        
+        return cell
+    }
 
+    func yelpCategories( ) -> [[String:String]] {
+        
+        return [["name": "Afghan", "code": "afghani"],
+        ["name": "African", "code": "african"],
+        ["name": "American, New", "code" : "newamerican"],
+        ["name": "Argentine", "code": "argentine"],
+        ["name": "Armerian", "code" : "armenian"],
+            ["name": "Austrian", "code": "austrian"]]
+        
+    }
     /*
     // MARK: - Navigation
 

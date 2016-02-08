@@ -14,12 +14,17 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     var businesses: [Business]!
     
     @IBOutlet weak var tableView: UITableView!
-    
-    
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        LoadMoreData()
+    }
+    
+    func LoadMoreData()
+    {
 
         tableView.dataSource = self
         tableView.delegate = self
