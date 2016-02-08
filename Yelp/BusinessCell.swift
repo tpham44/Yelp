@@ -49,6 +49,14 @@ class BusinessCell: UITableViewCell {
         //For rounding corner you must do follwing 2 thumbImageView
         thumbImageView.layer.cornerRadius = 10
         thumbImageView.clipsToBounds = true
+        
+        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
+    
+        
+    }
+    //this function will resize the width of the nameLabel when iphone set sideway
+    override func layoutSubviews() {
+        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
