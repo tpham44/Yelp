@@ -55,6 +55,7 @@ class BusinessCell: UITableViewCell {
         
     }
     //this function will resize the width of the nameLabel when iphone set sideway
+    
     override func layoutSubviews() {
         nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
     }
