@@ -96,7 +96,6 @@
 			children = (
 				81AA39291C6598F300CC8DC1 /* Views */,
 				22AAAA9A1AEA0AA100A544AF /* Models */,
-				222D8A7A19CCFAAA00D2DB53 /* API */,
 				22AAAA9D1AEA1EC600A544AF /* View Controllers */,
 				222D8A5A19CCF9F900D2DB53 /* AppDelegate.swift */,
 				222D8A5E19CCF9F900D2DB53 /* Main.storyboard */,
@@ -143,6 +142,7 @@
 		22AAAA9A1AEA0AA100A544AF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				222D8A7A19CCFAAA00D2DB53 /* API */,
 				22AAAA981AEA0A9700A544AF /* Business.swift */,
 			);
 			name = Models;
