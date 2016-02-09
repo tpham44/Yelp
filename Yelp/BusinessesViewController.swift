@@ -12,22 +12,66 @@ import UIKit
 class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
 
     var businesses: [Business]!
+    var buninessesBackup: [Business]!
+    var searchBar: UISearchBar!
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
    
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 120
+    
+    return cell
+
+
+     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+     
+             if(businessesBackup == nil) {
+                     businessesBackup = businesses
+                 }
+     
+             // When there is no text, filteredData is the same as the original data
+             if searchText.isEmpty {
+                     businesses = businessesBackup
+                 } else {
+                     // The user has entered text into the search box
+                         // Use the filter method to iterate over all items in the data array
+                         // For each item, return true if the item should be included and false if the
+                         // item should NOT be included
+                         businesses = businesses.filter({(dataItem: Business) -> Bool in
+             
+                             // If dataItem matches the searchText, return true to include it
+                             if dataItem.name!.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil {
+                                 return true
+                             } else {
+                                 return false
+                             }
+                         })
+                 }
+             
+             tableView.reloadData()
+        
+         }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar = UISearchBar()
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
         
+        tableView.dataSource = self
+        tableView.delegate = self
         LoadMoreData()
     }
     
     func LoadMoreData()
     {
 
-        tableView.dataSource = self
-        tableView.delegate = self
+        
         
         
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -104,6 +148,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             self.businesses = businesses
             self.tableView.reloadData()
             
-        }
+            }
     }
 }
