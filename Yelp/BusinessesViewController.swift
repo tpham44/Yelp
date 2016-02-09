@@ -9,7 +9,7 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
+class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate, UISearchBarDelegate {
 
     var businesses: [Business]!
     var businessesBackup: [Business]!
@@ -28,13 +28,16 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        LoadMoreData()
+        
         searchBar = UISearchBar()
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
         
+        searchBar.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
-        LoadMoreData()
+        
     }
 
 
@@ -72,8 +75,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     func LoadMoreData()
     {
 
-        
-        
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120  // setting for scroll bar length; which is using for the scoll height dimension
