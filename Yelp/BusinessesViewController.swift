@@ -12,7 +12,7 @@ import UIKit
 class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
 
     var businesses: [Business]!
-    var buninessesBackup: [Business]!
+    var businessesBackup: [Business]!
     var searchBar: UISearchBar!
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,13 +24,26 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     //tableView.estimatedRowHeight = 120
     
     //return cell
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        searchBar = UISearchBar()
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        LoadMoreData()
+    }
 
-/*
-     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
      
-             if(businessesBackup == nil) {
-                     businessesBackup = businesses
-                 }
+             if (businessesBackup == nil)
+            {
+                      businessesBackup = businesses
+            }
      
              // When there is no text, filteredData is the same as the original data
              if searchText.isEmpty {
@@ -49,24 +62,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
                                  return false
                             }
                          })
-                    }
+        }
         
-             tableView.reloadData()
+             self.tableView.reloadData()
         
-         }
- */
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        searchBar = UISearchBar()
-        searchBar.sizeToFit()
-        navigationItem.titleView = searchBar
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        LoadMoreData()
     }
+ 
     
     func LoadMoreData()
     {
@@ -141,7 +142,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
         
-        var categories = filters["categories"] as? [String]//expect the key word catagories
+        let categories = filters["categories"] as? [String]
+        //expect the key word catagories
         
         Business.searchWithTerm("Restaurants", sort: nil, categories: categories, deals: nil) { (businesses: [Business]!, error: NSError!) -> Void in
             
