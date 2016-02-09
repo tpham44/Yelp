@@ -17,15 +17,15 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var searchBar: UISearchBar!
+  
     
    
-    tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.estimatedRowHeight = 120
+    //tableView.rowHeight = UITableViewAutomaticDimension
+    //tableView.estimatedRowHeight = 120
     
-    return cell
+    //return cell
 
-
+/*
      func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
      
              if(businessesBackup == nil) {
@@ -35,7 +35,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
              // When there is no text, filteredData is the same as the original data
              if searchText.isEmpty {
                      businesses = businessesBackup
-                 } else {
+             } else {
                      // The user has entered text into the search box
                          // Use the filter method to iterate over all items in the data array
                          // For each item, return true if the item should be included and false if the
@@ -45,16 +45,16 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
                              // If dataItem matches the searchText, return true to include it
                              if dataItem.name!.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil {
                                  return true
-                             } else {
+                             }else {
                                  return false
-                             }
+                            }
                          })
-                 }
-             
+                    }
+        
              tableView.reloadData()
         
          }
-    
+ */
     
     override func viewDidLoad() {
         super.viewDidLoad()
